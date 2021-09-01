@@ -129,6 +129,13 @@ describe provider_class do
                           :control   => "requisite",
                           :module    => "pam_pwquality.so",
                           :arguments => ["try_first_pass","retry=3","type="],})
+      expect(inst[16]).to eq({:ensure    => :present,
+                              :service   => :absent,
+                              :optional  => true,
+                              :type      => "session",
+                              :control   => "optional",
+                              :module    => "pam_systemd.so",
+                              :arguments => [],})
     end
 
     describe "when reodering settings" do
